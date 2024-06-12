@@ -1,0 +1,137 @@
+<div class="profile">
+    <div class="profile__container">
+        <div class="profile__profile__logo">
+            <img src="{{profile.avatar}}" alt="Profile Image">
+        </div>
+        <div class="profile__profile__details">
+            <div class="profile__profile__details__userName">
+                <h4 id="username">@{{profile.username}}</h4>
+                {{#if isUser}}
+                <button id="edit-profile">Edit Profile</button>
+                <button>
+                    <svg aria-label="Options" class="_ab6-" color="#262626" fill="#262626" height="24" role="img"
+                        viewBox="0 0 24 24" width="24">
+                        <circle cx="12" cy="12" fill="none" r="8.635" stroke="currentColor" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="2"></circle>
+                        <path
+                            d="M14.232 3.656a1.269 1.269 0 01-.796-.66L12.93 2h-1.86l-.505.996a1.269 1.269 0 01-.796.66m-.001 16.688a1.269 1.269 0 01.796.66l.505.996h1.862l.505-.996a1.269 1.269 0 01.796-.66M3.656 9.768a1.269 1.269 0 01-.66.796L2 11.07v1.862l.996.505a1.269 1.269 0 01.66.796m16.688-.001a1.269 1.269 0 01.66-.796L22 12.93v-1.86l-.996-.505a1.269 1.269 0 01-.66-.796M7.678 4.522a1.269 1.269 0 01-1.03.096l-1.06-.348L4.27 5.587l.348 1.062a1.269 1.269 0 01-.096 1.03m11.8 11.799a1.269 1.269 0 011.03-.096l1.06.348 1.318-1.317-.348-1.062a1.269 1.269 0 01.096-1.03m-14.956.001a1.269 1.269 0 01.096 1.03l-.348 1.06 1.317 1.318 1.062-.348a1.269 1.269 0 011.03.096m11.799-11.8a1.269 1.269 0 01-.096-1.03l.348-1.06-1.317-1.318-1.062.348a1.269 1.269 0 01-1.03-.096"
+                            fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+                    </svg>
+                </button>
+                {{else}}
+                {{#if isFollowing}}
+                <button id="unfollow-btn" class="following">Following</button>
+                {{else}}
+                <button id="follow-btn">Follow</button>
+                {{/if}}
+                {{/if}}
+
+            </div>
+            <div class="profile__profile__details__follower">
+                <span><b>{{getCountOfPosts posts}}</b> posts</span>
+                <button><b>{{profile.countFollowers}}</b> followers</button>
+                <button><b>{{profile.countFollowing}}</b> following</button>
+            </div>
+            <div class="profile__profile__details__displayName">
+                <h6>{{profile.fullName}}</h6>
+            </div>
+            <div class="profile__profile__details__bio">
+                <p>{{profile.bio}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="profile__section">
+        <div class="">
+            <div class="profile__section__tab">
+                <button class="tablinks" onclick="openSection(event, 'Posts')" id="defaultOpen">
+                    <svg aria-label="Posts" class="_ab6-" color="#262626" fill="#262626" height="12" role="img"
+                        viewBox="0 0 24 24" width="12">
+                        <rect fill="none" height="18" stroke="currentColor" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="2" width="18" x="3" y="3"></rect>
+                        <line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2" x1="9.015" x2="9.015" y1="3" y2="21"></line>
+                        <line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2" x1="14.985" x2="14.985" y1="3" y2="21"></line>
+                        <line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2" x1="21" x2="3" y1="9.015" y2="9.015"></line>
+                        <line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2" x1="21" x2="3" y1="14.985" y2="14.985"></line>
+                    </svg>
+                    Posts
+                </button>
+                <button class="tablinks" onclick="openSection(event, 'Videos')">
+                    <svg aria-label="Videos" class="_ab6-" color="#8e8e8e" fill="#8e8e8e" height="12" role="img"
+                        viewBox="0 0 24 24" width="12">
+                        <path
+                            d="M12 0C5.4 0 0 5.4 0 12c0 6.6 5.4 12 12 12 6.6 0 12-5.4 12-12C24 5.4 18.6 0 12 0zm4.5 12l-9 5.25V6.75L16.5 12z">
+                        </path>
+                    </svg>
+                    Videos
+                </button>
+                <button class="tablinks" onclick="openSection(event, 'Saved')">
+                    <svg aria-label="Saved" class="_ab6-" color="#8e8e8e" fill="#8e8e8e" height="12" role="img"
+                        viewBox="0 0 24 24" width="12">
+                        <polygon fill="none" points="20 21 12 13.44 4 21 4 3 20 3 20 21" stroke="currentColor"
+                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></polygon>
+                    </svg>
+                    Saved
+                </button>
+                <button class="tablinks" onclick="openSection(event, 'Tagged')">
+                    <svg aria-label="Tagged" class="_ab6-" color="#8e8e8e" fill="#8e8e8e" height="12" role="img"
+                        viewBox="0 0 24 24" width="12">
+                        <path
+                            d="M3.949 3.949a1.4 1.4 0 012.828 0 1.4 1.4 0 11-2.828 0zM2 7.1v5.6a3.949 3.949 0 001.159 2.808l7.333 7.333a3.949 3.949 0 005.587 0l5.6-5.6a3.949 3.949 0 000-5.587L14.146 2A3.949 3.949 0 0011.339.8V7.1a3.949 3.949 0 00-3.949 3.949 3.949 3.949 0 00.697 2.196 3.949 3.949 0 00-5.546 0 3.949 3.949 0 00-.697-2.196 3.949 3.949 0 00-2.196-.697A3.949 3.949 0 000 11.339v-5.6A3.949 3.949 0 001.159 2zm0 12a3.949 3.949 0 005.546 0 3.949 3.949 0 00-5.546 0v.603m0 1.287A3.949 3.949 0 005.546 21.4v.603"
+                            fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2"></path>
+                        <circle cx="12.072" cy="11.075" fill="none" r="3.556" stroke="currentColor"
+                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle>
+                    </svg>
+                    Tagged
+                </button>
+            </div>
+
+            <div id="Posts" class="profile__section__tab__tabcontent">
+                <div class="profile__section__tab__tabcontent__container">
+                    {{#each posts}}
+                    <div class="profile__section__tab__tabcontent__container__post" data-post-id="{{this._id}}">
+                        <img src="{{getFirstImage this.images}}" alt="Post Image">
+                        <div class="profile__section__tab__tabcontent__container__post-info">
+                            <div class="profile__section__tab__tabcontent__container__post-box">
+                                <svg width="30" height="30" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M11.4995 21.2609C11.1062 21.2609 10.7307 21.1362 10.4133 20.9001C8.2588 19.3012 3.10938 15.3239 1.81755 12.9143C0.127895 9.76543 1.14258 5.72131 4.07489 3.89968C5.02253 3.31177 6.09533 3 7.18601 3C8.81755 3 10.3508 3.66808 11.4995 4.85726C12.6483 3.66808 14.1815 3 15.8131 3C16.9038 3 17.9766 3.31177 18.9242 3.89968C21.8565 5.72131 22.8712 9.76543 21.186 12.9143C19.8942 15.3239 14.7448 19.3012 12.5902 20.9001C12.2684 21.1362 11.8929 21.2609 11.4995 21.2609ZM7.18601 4.33616C6.34565 4.33616 5.5187 4.57667 4.78562 5.03096C2.43888 6.49183 1.63428 9.74316 2.99763 12.2819C4.19558 14.5177 9.58639 18.6242 11.209 19.8267C11.3789 19.9514 11.6158 19.9514 11.7856 19.8267C13.4082 18.6197 18.799 14.5133 19.997 12.2819C21.3603 9.74316 20.5557 6.48738 18.209 5.03096C17.4804 4.57667 16.6534 4.33616 15.8131 4.33616C14.3425 4.33616 12.9657 5.04878 12.0359 6.28696L11.4995 7.00848L10.9631 6.28696C10.0334 5.04878 8.6611 4.33616 7.18601 4.33616Z"
+                                        fill="#fff" stroke="#fff" stroke-width="0.6" />
+                                </svg>
+                                <span>{{this.countLikes}}</span>
+                            </div>
+                            <div class="profile__section__tab__tabcontent__container__post-box">
+                                <svg width="30" height="30" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M21.2959 20.8165L20.2351 16.8602C20.1743 16.6385 20.2047 16.3994 20.309 16.1907C21.2351 14.3342 21.5438 12.117 20.9742 9.80402C20.2003 6.67374 17.757 4.16081 14.6354 3.33042C13.7833 3.10869 12.9442 3 12.1312 3C6.29665 3 1.74035 8.47365 3.31418 14.5647C4.04458 17.3819 7.05314 20.2992 9.88344 20.9861C10.6486 21.173 11.4008 21.26 12.1312 21.26C13.7006 21.26 15.1701 20.8557 16.4614 20.1601C16.6049 20.0818 16.7657 20.0383 16.9222 20.0383C17.0005 20.0383 17.0787 20.047 17.157 20.0688L21.009 21.0991C21.0307 21.1035 21.0525 21.1078 21.0699 21.1078C21.2177 21.1078 21.3351 20.9687 21.2959 20.8165ZM19.0178 17.1863L19.6178 19.4253L17.4831 18.8558C17.3005 18.8079 17.1135 18.7819 16.9222 18.7819C16.557 18.7819 16.1875 18.8775 15.8571 19.0558C14.6963 19.6818 13.4441 19.9992 12.1312 19.9992C11.4834 19.9992 10.8269 19.9166 10.1791 19.7601C7.78354 19.1775 5.14453 16.6037 4.53586 14.2473C3.90111 11.7865 4.40109 9.26057 5.90536 7.31719C7.40964 5.3738 9.6791 4.26081 12.1312 4.26081C12.8529 4.26081 13.5876 4.35646 14.3137 4.5521C16.9961 5.26511 19.0786 7.39544 19.7525 10.1084C20.2264 12.0213 20.0308 13.9299 19.183 15.6298C18.9395 16.1168 18.8787 16.6689 19.0178 17.1863Z"
+                                        fill="#fff" stroke="#fff" stroke-width="0.7" />
+                                </svg>
+                                <span>{{this.countComments}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+
+            <div id="Videos" class="profile__section__tab__tabcontent">
+                <!-- Video content goes here -->
+            </div>
+
+            <div id="Saved" class="profile__section__tab__tabcontent">
+                <!-- Saved content goes here -->
+            </div>
+
+            <div id="Tagged" class="profile__section__tab__tabcontent">
+                <!-- Tagged content goes here -->
+            </div>
+        </div>
+    </div>
+</div>

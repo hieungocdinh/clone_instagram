@@ -1,0 +1,256 @@
+.post {
+    display: flex;
+}
+
+/* Post image */
+.post__images {
+    width: 60%;
+    height: 100vh;
+    position: relative;
+}
+
+.post__medias {
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: auto;
+
+    width: 100%;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+
+    background-color: black;
+}
+
+.post__medias::-webkit-scrollbar {
+    display: none;
+}
+
+.post__media {
+    width: 100%;
+    height: 100vh;
+    object-fit: contain;
+    flex: none;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+
+.post__left-button,
+.post__right-button {
+    width: 24px;
+    height: 24px;
+    display: block;
+
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.5));
+
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.post__left-button {
+    left: 16px;
+    opacity: 0.7;
+}
+
+.post__right-button {
+    right: 16px;
+    opacity: 0.7;
+}
+
+.post__indicators {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.post__indicator {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--text-light);
+}
+
+.post__indicator--active {
+    background-color: #fff;
+}
+
+/* Post content */
+.post__content {
+    width: 40%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid #ccc;
+}
+
+.post__content__user {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    padding: 0 16px;
+}
+
+.post__content__user a {
+    text-decoration: none;
+}
+
+.post__content__user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.post__content__user-info__avatar {
+    overflow: hidden;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.post__content__user-info__username {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: black;
+}
+
+.post__content__user-more {
+    cursor: pointer;
+}
+
+.post__content__user-more svg {
+    height: 32px;
+    width: 32px;
+}
+
+/* comment */
+.post__content__comments {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    height: calc(100vh - 200px);
+    border-bottom: 1px solid #ccc;
+    overflow-y: auto;
+}
+
+.post__content__comment {
+    display: flex;
+    margin-bottom: 16px;
+}
+
+.post__content__comment-avatar {
+    overflow: hidden;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.post__content__comment-main {
+    margin-left: 16px;
+}
+
+.post__content__comment-main a {
+    text-decoration: none;
+    padding: 4px 0;
+}
+
+.post__content__comment-username {
+    color: black;
+    font-size: 1.4rem;
+}
+
+.post__content__comment-text {
+    color: #797979;
+    font-size: 1.3rem;
+}
+
+.post__content__comment-time {
+    display: block;
+    margin-top: 8px;
+    font-size: 1.2rem;
+}
+
+/* action */
+.post__content__action {
+    background-color: var(--primary);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 0 4px;
+    border-bottom: 1px solid #ccc;
+}
+
+.post__buttons {
+    padding-top: 4px;
+    display: flex;
+    position: relative;
+}
+
+.post__button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    padding: 8px;
+}
+
+.post__icon-liked {}
+
+.post__button--align-right {
+    margin-left: auto;
+}
+
+/* Post comment input */
+.post__content__comment-send {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    justify-content: space-between;
+}
+
+.post__content__comment-send-user {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.post__content__comment-send-avatar {
+    overflow: hidden;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.post__content__comment-send-input {
+    height: 100%;
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 12px;
+    margin: 0 16px;
+    font-size: 1.4rem;
+}
+
+.post__content__comment-send-btn {
+    background-color: var(--primary);
+    color: #ccc;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    font-size: 1.4rem;
+    font-weight: 500;
+    text-transform: uppercase;
+}

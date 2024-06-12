@@ -1,0 +1,27 @@
+<div class="edit-profile">
+    <h1 class="edit-profile__title">Chỉnh sửa trang cá nhân</h1>
+
+
+    <div class="edit-profile__info">
+        <div class="edit-profile__info-avatar">
+            <img src="{{profile.avatar}}" alt="avatar" class="edit-profile__info-avatar-img">
+            <span id="username">@{{profile.username}}</span>
+        </div>
+        <div class="edit-profile__info-box">
+            <label class="edit-profile__info-box-title">Ảnh đại diện</label>
+            <input id="avatar" name="avatar" value="{{profile.avatar}}" type="file" accept="image/*" class="
+                edit-profile__info-box-input">
+        </div>
+        <div class="edit-profile__info-box">
+            <label class="edit-profile__info-box-title" for="fullName">Họ và tên</label>
+            <input id="fullName" name="fullName" value="{{profile.fullName}}" type="text"
+                class="edit-profile__info-box-input">
+        </div>
+        <div class="edit-profile__info-box">
+            <label class="edit-profile__info-box-title" for="bio">Tiểu sử</label>
+            <textarea id="bio" name="bio" class="edit-profile__info-box-input" rows="5">{{profile.bio}}</textarea>
+        </div>
+    </div>
+
+    <button id="submit-edit-btn" class="edit-profile__info-submit">Gửi</button>
+</div>

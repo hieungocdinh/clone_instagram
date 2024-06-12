@@ -1,0 +1,139 @@
+.login {
+    width: 100%;
+}
+
+.login__container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+/* from */
+.login__container-frm {
+    width: 360px;
+    margin-top: 32px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 1px 1px 5px #ccc;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.login__container-frm-img {
+    width: 200px;
+    margin: 16px auto 24px;
+}
+
+.login__container-frm-input {
+    width: 80%;
+    height: 40px;
+    margin: 8px auto;
+    padding: 4px 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1.4rem;
+}
+
+.login__container-frm-btn {
+    width: 80%;
+    height: 40px;
+    margin: 16px auto;
+    font-size: 1.6rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.login__container-frm-btn:hover {
+    background-color: #0365cd;
+}
+
+.login__container-frm-link {
+    width: 80%;
+    margin: 16px auto;
+    font-size: 1.4rem;
+    text-align: center;
+    text-decoration: none;
+}
+
+.login__container-frm-link:hover {
+    text-decoration: underline;
+}
+
+/* register */
+.login__container-register {
+    width: 360px;
+    margin-top: 24px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 1px 1px 5px #ccc;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login__container-register-link {
+    font-size: 1.5rem;
+    color: #007bff;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 20px 0;
+}
+
+.login__container-register-link:hover {
+    color: #0161c8;
+}
+
+/* down load */
+.login__container-download {
+    width: 360px;
+    height: 70px;
+    margin-top: 24px;
+}
+
+.login__container-download-title {
+    text-align: center;
+    font-size: 1.4rem;
+    margin-bottom: 16px;
+}
+
+.login__container-download-link {
+    display: flex;
+    justify-content: center;
+}
+
+.login__container-download-icon {
+    height: 40px;
+    margin: 0 8px;
+}
+
+/* register */
+.register__title {
+    display: block;
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-top: 16px;
+}
+
+/* check css */
+
+.input-error {
+    border: 1px solid red;
+}
+
+.message-error {
+    height: 16px;
+    color: red;
+    font-size: 1.2rem;
+    display: block;
+    text-align: center;
+    margin-bottom: 4px;
+}
