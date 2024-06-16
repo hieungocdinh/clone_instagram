@@ -6,6 +6,9 @@
             {{/each}}
         </div>
         <div class="post__indicators"></div>
+        <div class="post__back">
+            <span>&times;</span>
+        </div>
     </div>
     <div class="post__content">
         <div class="post__content__user">
@@ -17,6 +20,7 @@
                     <span class="post__content__user-info__username">@{{post.username}}</span>
                 </div>
             </a>
+            {{#if post.isUserPost}}
             <div class="post__content__user-more">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="6.5" cy="11.5" r="1.5" fill="var(--text-dark)" />
@@ -24,8 +28,27 @@
                     <circle cx="17.5" cy="11.5" r="1.5" fill="var(--text-dark)" />
                 </svg>
             </div>
+            {{/if}}
         </div>
         <div class="post__content__comments">
+            <div class="post__content__comment">
+                <a href="/profile/{{post.username}}">
+                    <div class="post__content__comment-avatar">
+                        <img src="{{post.avatar}}" alt="Avatar">
+                    </div>
+                </a>
+                <div class="post__content__comment-main">
+                    <div>
+                        <a href="">
+                            <span class="post__content__comment-username">@{{post.username}}</span>
+                        </a>
+                        <span class="post__content__comment-text">
+                            {{post.content}}
+                        </span>
+                    </div>
+                    <span class="post__content__comment-time">{{post.timecreated}}</span>
+                </div>
+            </div>
             {{#each comments}}
             <div class="post__content__comment">
                 <a href="/profile/{{this.username}}">
@@ -115,3 +138,83 @@
             </button>
         </div>
     </div>
+</div>
+{{!-- Modal --}}
+<div id="modal" class="modal">
+    <div class="modal__post-options">
+        <div data-option="delete" class="modal__post-option delete-option">
+            Xóa bài viết
+        </div>
+        <div data-post-id="{{post.id}}" data-option="edit" class="modal__post-option">
+            Chỉnh sửa bài viết
+        </div>
+        <div data-option="exit" class="modal__post-option">
+            Hủy
+        </div>
+    </div>
+    <div class="modal__post-confirm-delete">
+        <div class="modal__post-confirm-delete__title">
+            Bạn có chắc chắn muốn xóa bài viết này không ?
+            <br>
+            <span>Sau khi xóa, dữ liệu của bài viết sẽ không thể khôi phục !!!</span>
+        </div>
+        <div class="modal__post-confirm__actions">
+            <button class="modal__post-confirm__action" data-action="exit">Hủy</button>
+            <button class="modal__post-confirm__action delete-action" data-action="delete" data-post-id="{{post.id}}"
+                data-username="{{user.username}}">Xóa</button>
+        </div>
+    </div>
+    <div class="modal-post-edit">
+        <div class="modal-post-edit__header">
+            <h2>Chỉnh sửa bài viết</h2>
+            <span class="close-btn">&times;</span>
+        </div>
+        <div class="modal-post-edit__body">
+            <div class="modal-post-edit__body-user">
+                <div class="modal-post-edit__body-user-avt">
+                    <img src="{{post.avatar}}" alt="" class="modal-post-edit__body-user-img">
+                </div>
+                <span>@{{post.username}}</span>
+            </div>
+            <div class="modal-post-edit__body-input">
+                <textarea name="postContent" id="post-content" rows="4" class="modal-post-edit__body-input-text"
+                    placeholder="Bạn đang nghĩ gì ?">{{post.content}}</textarea>
+            </div>
+            <span class="modal-post-edit__body-message"></span>
+            <div class="modal-post-edit__body-upload-img">
+                <div class="modal-post-edit__body-upload-img-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path
+                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM232 344V280H168c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" />
+                    </svg>
+                </div>
+
+                <input type="file" id="imageUpload" multiple accept="image/*" style="display: none;" />
+                {{#each post.images}}
+                <div class="modal-post-edit__body-upload-img-preview-previous">
+                    <img src="{{this}}" alt="Image" class="modal-post-edit__body-upload-img-preview-img-previous">
+                    <button class="modal-post-edit__body-upload-img-preview-delete-previous" data-index="{{@index}}">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path
+                                d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z" />
+                        </svg>
+                    </button>
+                </div>
+                {{/each}}
+            </div>
+            <div class="modal-post-edit__body-place">
+                <label for="post-place">Địa điểm</label>
+                <select id="post-place" data-location="{{post.location}}">
+                    <option value="none">None</option>
+                    <option value="HaNoi">Hà Nội</option>
+                    <option value="HCM">TP.HCM</option>
+                    <option value="DaNang">Đà Nẵng</option>
+                    <option value="BacKan">Bắc Kạn</option>
+                </select>
+            </div>
+        </div>
+        <div class="modal-post-edit__footer">
+            <button class="modal-post-edit__footer-btn" data-id="{{post.id}}">Sửa</button>
+        </div>
+    </div>
+</div>

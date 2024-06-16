@@ -41,7 +41,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
                         message.innerHTML = data.error;
                     }
                     else if (data.suscess) {
-                        alert(data.suscess);
                         window.location.replace('/');
                     }
                 })

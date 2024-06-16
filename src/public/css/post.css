@@ -85,6 +85,24 @@
     background-color: #fff;
 }
 
+.post__back {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    z-index: 1;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.post__back span {
+    font-size: 3.2rem;
+    color: #797979;
+}
+
+.post__back:hover span {
+    color: #fff;
+}
+
 /* Post content */
 .post__content {
     width: 40%;
@@ -128,12 +146,15 @@
 
 .post__content__user-more {
     cursor: pointer;
+    padding: 4px;
 }
 
 .post__content__user-more svg {
     height: 32px;
     width: 32px;
 }
+
+
 
 /* comment */
 .post__content__comments {
@@ -253,4 +274,287 @@
     font-size: 1.4rem;
     font-weight: 500;
     text-transform: uppercase;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+.modal__post-options {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    width: 300px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 16px 20px;
+}
+
+.modal__post-option {
+    text-align: center;
+    font-size: 1.6rem;
+    padding: 16px 0;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.modal__post-option:hover {
+    background-color: #d8d8d8;
+}
+
+.modal__post-option.delete-option {
+    color: #ff0000;
+}
+
+.modal__post-option:last-child {
+    border-bottom: none;
+}
+
+.modal__post-confirm-delete {
+    display: none;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    width: 300px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 40px 36px;
+}
+
+.modal__post-confirm-delete__title {
+    font-size: 1.6rem;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #ccc;
+}
+
+.modal__post-confirm-delete__title span {
+    font-size: 1.3rem;
+    color: #797979;
+}
+
+.modal__post-confirm__actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 32px;
+}
+
+.modal__post-confirm__action {
+    padding: 8px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+}
+
+.modal__post-confirm__action.delete-action {
+    background-color: #ff0000;
+    color: #fff;
+}
+
+.modal-post-edit {
+    display: none;
+    width: 500px;
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.modal-post-edit__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #ccc;
+}
+
+.modal-post-edit__header h2 {
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+}
+
+.modal-post-edit__body {
+    margin-bottom: 16px;
+}
+
+.modal-post-edit__body-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.modal-post-edit__body-user-avt {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+}
+
+.modal-post-edit__body-user span {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+.modal-post-edit__body-input-text {
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 8px;
+}
+
+.modal-post-edit__body-input-text:focus {
+    outline: none;
+    border: 1px solid #ccc;
+}
+
+.modal-post-edit__body-message {
+    display: block;
+    height: 24px;
+    padding-bottom: 12px;
+    color: red;
+}
+
+.modal-post-edit__body-upload-img {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+
+}
+
+.modal-post-edit__body-upload-img-preview-previous,
+.modal-post-edit__body-upload-img-preview {
+    position: relative;
+
+}
+
+.modal-post-edit__body-upload-img-preview:hover .modal-post-edit__body-upload-img-preview-delete {
+    display: block;
+}
+
+.modal-post-edit__body-upload-img-preview-previous:hover .modal-post-edit__body-upload-img-preview-delete-previous {
+    display: block;
+}
+
+.modal-post-edit__body-upload-img-preview:hover img {
+    filter: brightness(0.5);
+}
+
+.modal-post-edit__body-upload-img-preview-previous:hover img {
+    filter: brightness(0.5);
+}
+
+.modal-post-edit__body-upload-img-preview-previous img,
+.modal-post-edit__body-upload-img-preview img {
+    width: 80px;
+    height: 100px;
+
+}
+
+.modal-post-edit__body-upload-img-preview-delete-previous,
+.modal-post-edit__body-upload-img-preview-delete {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.modal-post-edit__body-upload-img-preview-delete-previous svg,
+.modal-post-edit__body-upload-img-preview-delete svg {
+    width: 24px;
+    height: 24px;
+    fill: #fff;
+}
+
+.modal-post-edit__body-upload-img-btn {
+    width: 80px;
+    height: 100px;
+    border: 1px dashed #ccc;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-post-edit__body-upload-img-btn svg {
+    width: 24px;
+    height: 24px;
+}
+
+.modal-post-edit__body-place {
+    display: flex;
+    height: 40px;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+
+}
+
+.modal-post-edit__body-place label {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.modal-post-edit__body-place select {
+    width: 160px;
+    padding: 4px 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.modal-post-edit__footer {}
+
+.modal-post-edit__footer-btn {
+    width: 100%;
+    padding: 8px 16px;
+    background-color: #0095f6;
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+}
+
+.modal-post-edit__footer-btn:hover {
+    background-color: #0679c5;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
