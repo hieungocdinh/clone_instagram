@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const uploadBtn = document.querySelector('.modal-content__body-upload-img-btn');
     const imageUpload = document.getElementById('imageUpload');
     const previewContainer = document.querySelector('.modal-content__body-upload-img');
+    const profileBtnMobile = document.getElementById('profile-button-mobile');
 
     // suggestion follow
     $('.suggestion-follow-btn').click(function () {
@@ -292,5 +293,10 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
+    // profile button mobile
+    profileBtnMobile.addEventListener('click', function () {
+        const username = profileBtnMobile.dataset.username;
+        window.location.href = `/profile/${username}`;
+    });
 });
 

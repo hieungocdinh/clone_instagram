@@ -83,6 +83,8 @@
 }
 
 .profile__profile__details__userName button {
+    display: flex;
+    align-items: center;
     background-color: transparent;
     border: 1px solid #dbdbdb;
     border-radius: 5px;
@@ -93,6 +95,10 @@
 
 .profile__profile__details__userName button:hover {
     background-color: #ececec;
+}
+
+.profile__profile__details__userName .edit-profile-title {
+    margin-right: 12px;
 }
 
 .profile__profile__details__follower {
@@ -117,6 +123,29 @@
 .profile__profile__details__bio p {
     margin-top: 10px;
     font-size: 1.4rem;
+}
+
+.profile__mobile-follow {
+    height: 60px;
+    width: 100%;
+    border-top: 1px solid #ccc;
+    display: none;
+}
+
+.profile__mobile-follow-info {
+    width: calc(100% / 3);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 1.2rem;
+}
+
+.profile__mobile-follow-info span {
+    font-size: 1.6rem;
+    font-weight: 600;
+    padding: 4px 0;
 }
 
 .profile__section {
@@ -161,7 +190,6 @@
 .profile__section__tab__tabcontent__container {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
 }
 
 .profile__section__tab__tabcontent__container__post {
@@ -171,6 +199,7 @@
     overflow: hidden;
     cursor: pointer;
     position: relative;
+    margin: 0 5px;
 }
 
 .profile__section__tab__tabcontent__container__post img {

@@ -1,3 +1,4 @@
+/* responsive */
 /* Media Queries */
 @media (max-width: 767px) {
     .header__buttons--desktop {
@@ -11,43 +12,108 @@
 
 }
 
-@media (min-width: 620px) {
-    .content-container {
-        padding: 30px 0 24px;
+/* Mobile: width < 740px */
+@media only screen and (max-width: 739px) {
+
+    /* profile page */
+    .profile {
+        width: 100%;
+        margin: 44px 4px 0;
+        font-size: 1.4rem;
     }
 
-    .content {
-        gap: 24px;
+    .profile__container {
+        padding: 16px 8px;
     }
 
-    .stories {
-        border: 1px solid var(--border);
-        border-radius: 4px;
+    .profile__profile__logo img {
+        width: 100px;
+        height: 100px;
     }
 
-    .stories::after {
-        content: none;
+    .edit-profile-title {
+        display: none;
     }
 
-    .posts {
-        gap: 24px;
+    .profile__profile__details__displayName h6 {
+        margin-top: 16px;
     }
 
+    .profile__profile__details__bio p {
+        margin-top: 4px;
+        width: 200px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+
+    .profile__profile__details__follower {
+        display: none;
+    }
+
+    .profile__profile__details__displayName h6 {
+        font-size: 1.6rem;
+        font-weight: 500;
+    }
+
+    .profile__mobile-follow {
+        display: flex;
+    }
+
+    .profile__section {
+        margin-top: 0;
+    }
+
+    .profile__section__tab button {
+        padding: 14px;
+    }
+
+    .profile__section__tab__tabcontent {
+        padding: 8px;
+    }
+
+    .profile__section__tab__tabcontent__container__post {
+        height: auto;
+    }
+
+    .profile__section__tab__tabcontent__container__post:hover .profile__section__tab__tabcontent__container__post-info {
+        display: none;
+    }
+
+    /* edit profile page */
+    .edit-profile {
+        width: 100%;
+    }
+
+    /* Post page */
     .post {
-        border: 1px solid var(--border);
-        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
     }
 
-    .post__footer {
-        padding: 4px 8px 12px;
+    .post__images {
+        width: 100%;
+        height: 100%;
     }
 
-    .post__date-time {
-        margin-top: 6px;
+    .post__media {
+        height: 600px;
+    }
+
+    .post__content {
+        width: 100%;
+        height: 100%;
+    }
+
+    .post__content__comments {
+        height: 100%;
     }
 }
 
-@media (min-width: 768px) {
+/* Tablet: width>=740 and width < 1024px */
+@media only screen and (min-width: 740px) and (max-width: 1023px) {
+
+    /* home page */
     :root {
         --header-height: 54px;
         --nav-height: 0px;
@@ -68,9 +134,71 @@
     .navbar {
         display: none;
     }
+
+    .content-container {
+        padding: 30px 0 24px;
+    }
+
+    .content {
+        gap: 24px;
+    }
+
+    .posts {
+        gap: 24px;
+    }
+
+    .post {
+        border: 1px solid var(--border);
+        border-radius: 4px;
+    }
+
+    .post__footer {
+        padding: 4px 8px 12px;
+    }
+
+    .post__date-time {
+        margin-top: 6px;
+    }
+
+    /* profile page */
+    .profile {
+        width: 100%;
+    }
+
+    /* edit profile page */
+    .edit-profile {
+        width: 100%;
+    }
+
+    /* Post page */
+    .post {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .post__images {
+        width: 100%;
+        height: 100%;
+    }
+
+    .post__media {
+        height: 800px;
+    }
+
+    .post__content {
+        width: 100%;
+        height: 100%;
+    }
+
+    .post__content__comments {
+        height: 100%;
+    }
 }
 
-@media (min-width: 1024px) {
+/* PC: width >=1024px */
+@media only screen and (min-width: 1024px) {
+
+    /* home page */
     .main-container {
         background-color: var(--secondary);
     }
