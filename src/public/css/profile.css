@@ -126,6 +126,7 @@
 }
 
 .profile__mobile-follow {
+    margin: 16px 0;
     height: 60px;
     width: 100%;
     border-top: 1px solid #ccc;
@@ -193,13 +194,14 @@
 }
 
 .profile__section__tab__tabcontent__container__post {
+    box-shadow: 0 0 8px #e1e1e1;
     display: flex;
     width: calc(100% / 3 - 10px);
     height: 400px;
     overflow: hidden;
     cursor: pointer;
     position: relative;
-    margin: 0 5px;
+    margin: 8px 5px;
 }
 
 .profile__section__tab__tabcontent__container__post img {
@@ -328,4 +330,49 @@
 .following {
     color: #0765ff;
     font-weight: 500;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+.modal__profile-options {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    width: 300px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 16px 20px;
+}
+
+.modal__profile-option {
+    text-align: center;
+    font-size: 1.6rem;
+    padding: 16px 0;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.modal__profile-option:hover {
+    background-color: #d8d8d8;
+}
+
+.modal__profile-option.logout-option {
+    color: #ff0000;
+}
+
+.modal__profile-option:last-child {
+    border-bottom: none;
 }

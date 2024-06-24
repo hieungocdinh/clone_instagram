@@ -2,6 +2,9 @@ const editProfileBtn = document.getElementById("edit-profile");
 const username = document.getElementById("username").innerText.substring(1);
 const followBtn = document.getElementById("follow-btn");
 const unfollowBtn = document.getElementById("unfollow-btn");
+const settingBtn = document.getElementById("setting");
+const modal = document.getElementById("modal");
+
 
 function openSection(evt, tabName) {
     var i, tabcontent, tablinks;
@@ -70,5 +73,31 @@ document.addEventListener("DOMContentLoaded", function () {
         const postId = button.data('post-id');
         window.location.href = `/post/${postId}`;
     });
+
+    // Setting
+    if (settingBtn) {
+        settingBtn.addEventListener('click', () => {
+            modal.style.display = 'block';
+        });
+
+        window.addEventListener('click', function (event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        $('.modal__profile-option').click(function () {
+            const btn = $(this);
+            const option = btn.data('option');
+            switch (option) {
+                case 'logout':
+                    window.location.href = '/logout';
+                    break;
+                default:
+                    break;
+            }
+        });
+    }
+
 
 });

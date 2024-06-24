@@ -62,6 +62,7 @@
 
     .profile__section {
         margin-top: 0;
+        padding-top: 16px;
     }
 
     .profile__section__tab button {
@@ -107,6 +108,41 @@
 
     .post__content__comments {
         height: 100%;
+    }
+
+    /* Modal post create */
+    .modal-content {
+        width: 100%;
+        margin: 30% auto;
+    }
+
+    .modal-content__body-upload-img-preview img {
+        width: 100px;
+        height: 120px;
+        object-fit: cover;
+    }
+
+    .modal-content__body-upload-img-btn {
+        width: 100px;
+        height: 120px;
+    }
+
+    /* Modal post edit */
+    .modal-post-edit {
+        width: 100%;
+        margin: 30% auto;
+    }
+
+    .modal-post-edit__body-upload-img-preview-previous img,
+    .modal-post-edit__body-upload-img-preview img {
+        width: 100px;
+        height: 120px;
+        object-fit: cover;
+    }
+
+    .modal-post-edit__body-upload-img-btn {
+        width: 100px;
+        height: 120px;
     }
 }
 
@@ -209,5 +245,57 @@
 
     .side-menu {
         display: flex;
+    }
+
+    :root {
+        --header-height: 54px;
+        --nav-height: 0px;
+    }
+
+    .header__content {
+        padding: 0 20px;
+    }
+
+    .header__search {
+        display: flex;
+    }
+
+    .header__buttons--mobile {
+        display: none;
+    }
+
+    .navbar {
+        display: none;
+    }
+
+    .content-container {
+        padding: 30px 0 24px;
+    }
+
+    .content {
+        gap: 24px;
+    }
+
+    .posts {
+        gap: 24px;
+    }
+
+    .post {
+        border: 1px solid var(--border);
+        border-radius: 4px;
+    }
+
+    .post__footer {
+        padding: 4px 8px 12px;
+    }
+
+    .post__date-time {
+        margin-top: 6px;
+    }
+
+    /* create post*/
+    .create-post {
+        border: 1px solid var(--border);
+        border-radius: 4px;
     }
 }
