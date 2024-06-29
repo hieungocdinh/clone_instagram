@@ -1,0 +1,49 @@
+<div class="search">
+    <div class="search__mobile">
+        <input type="text" class="search__mobile-input" placeholder="Nhập username hoặc tên người dùng...">
+        <button class="search__mobile-btn">Tìm kiếm</button>
+    </div>
+    <div class="search__title">
+        {{#if q}}
+        <h3>Kết quả tìm kiếm người dùng cho từ khóa "{{q}}":</h3>
+        {{else}}
+        <h3>Vui lòng nhập từ khóa tìm kiếm !</h3>
+        {{/if}}
+    </div>
+    <div class="search__list-result">
+        {{#each results}}
+        <div class="search__list-result__item">
+            <a href="/profile/{{this.username}}">
+                <img src="{{this.avatar}}" alt="avatar" class="search__list-result__item-img">
+            </a>
+            <div class="search__list-result__item-info">
+                <a href="/profile/{{this.username}}" class="search__list-result__item-info-name">{{this.fullName}}</a>
+                <br>
+                <a href="/profile/{{this.username}} " class="search__list-result__item-info-username">@{{this.username}}
+                    - Có
+                    <b>{{this.countFollowers}}</b> người theo
+                    dõi</a>
+            </div>
+
+            {{#if this.isFollowing}}
+            <button data-username="{{this.username}}" class="search-btn-follow search__list-result__item-btn hide">Theo
+                dõi</button>
+            <button data-username="{{this.username}}"
+                class="search-btn-unfollow search__list-result__item-btn search__list-result__item-btn-following">
+                Đang theo dõi
+            </button>
+            {{else}}
+            <button data-username="{{this.username}}" class="search-btn-follow search__list-result__item-btn">Theo
+                dõi</button>
+            <button data-username="{{this.username}}"
+                class="search-btn-unfollow search__list-result__item-btn search__list-result__item-btn-following hide">
+                Đang theo dõi
+            </button>
+            {{/if}}
+
+
+        </div>
+        {{/each}}
+
+    </div>
+</div>

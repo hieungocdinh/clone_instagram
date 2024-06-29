@@ -1,0 +1,120 @@
+.search {
+    width: 936px;
+    margin: 0 auto;
+    margin-top: var(--header-height);
+    padding-top: 24px;
+}
+
+.search__title h3 {
+    font-size: 2.4rem;
+    font-weight: 500;
+    margin-bottom: 48px;
+}
+
+.search__list-result {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.search__list-result__item {
+    width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    margin-bottom: 16px;
+}
+
+.search__list-result__item-img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    margin-right: 24px;
+    object-fit: contain;
+    border: 1px solid #e0e0e0;
+}
+
+.search__list-result__item-info {
+    flex: 1;
+}
+
+.search__list-result__item-info a {
+    text-decoration: none;
+    color: #000;
+}
+
+.search__list-result__item-info-name {
+    display: inline-block;
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding-bottom: 8px;
+}
+
+.search__list-result__item-info-name:hover {
+    text-decoration: underline;
+}
+
+.search__list-result__item-info-username {
+    display: inline-block;
+    font-size: 1.3rem;
+    color: #666;
+}
+
+.search__list-result__item-info-username:hover {
+    text-decoration: underline;
+}
+
+.search__list-result__item-btn {
+    padding: 8px 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    background-color: #ededed;
+    color: #333;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.search__list-result__item-btn:hover {
+    background-color: #f1f1f1;
+}
+
+.search__list-result__item-btn:active {
+    background-color: #e1e1e1;
+}
+
+.search__list-result__item-btn.search__list-result__item-btn-following {
+    color: #0765ff;
+}
+
+/* Search mobile */
+.search__mobile {
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.search__mobile-input {
+    flex: 1;
+    height: 36px;
+    font-size: 1.4rem;
+    margin-right: 8px;
+    padding: 0 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+}
+
+.search__mobile-btn {
+    height: 36px;
+    padding: 0 8px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    background-color: #ededed;
+    color: #333;
+    font-size: 1.3rem;
+    cursor: pointer;
+}

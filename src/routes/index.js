@@ -5,10 +5,12 @@ const registerRoute = require('./register');
 const profileRoute = require('./profile');
 const followingRoute = require('./following');
 const postRoute = require('./post');
+const searchRoute = require('./search');
 
 const testRoute = require('./test');
 
 function routes(app) {
+    app.use('/search', searchRoute)
     app.use('/post', postRoute)
     app.use('/following', followingRoute)
     app.use('/profile', profileRoute)

@@ -112,6 +112,7 @@
     border: none;
     font-size: 16px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .profile__profile__details__displayName h6 {
@@ -125,7 +126,7 @@
     font-size: 1.4rem;
 }
 
-.profile__mobile-follow {
+.profile__mobile {
     margin: 16px 0;
     height: 60px;
     width: 100%;
@@ -133,7 +134,7 @@
     display: none;
 }
 
-.profile__mobile-follow-info {
+.profile__mobile-info {
     width: calc(100% / 3);
     height: 100%;
     display: flex;
@@ -143,7 +144,7 @@
     font-size: 1.2rem;
 }
 
-.profile__mobile-follow-info span {
+.profile__mobile-info span {
     font-size: 1.6rem;
     font-weight: 600;
     padding: 4px 0;
@@ -344,8 +345,9 @@
     z-index: 2;
 }
 
+
 .modal__profile-options {
-    display: block;
+    display: none;
     position: absolute;
     top: 50%;
     right: 50%;
@@ -375,4 +377,119 @@
 
 .modal__profile-option:last-child {
     border-bottom: none;
+}
+
+/* list user */
+.modal__profile-user {
+    display: none;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+
+    width: 400px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.modal__profile-user-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding: 16px 20px;
+}
+
+.modal__profile-user-header h3 {
+    font-size: 1.6rem;
+    font-weight: 500;
+    flex: 1;
+    text-align: center;
+}
+
+.modal__profile-user-header span {
+    font-size: 2.4rem;
+    font-weight: 500;
+    padding: 0 8px;
+    cursor: pointer;
+}
+
+.modal__profile-user-main {
+    padding: 8px 20px 16px;
+}
+
+.modal__profile-user-main__search-input {
+    width: 100%;
+    padding: 8px;
+    font-size: 1.4rem;
+    border: 1px solid #dbdbdb;
+    border-radius: 5px;
+}
+
+.modal__profile-user-main__list {
+    margin-top: 16px;
+    height: 300px;
+    overflow-y: auto;
+}
+
+/* Custom scrollbar styles */
+.modal__profile-user-main__list::-webkit-scrollbar {
+    width: 8px;
+    /* Chiều rộng của thanh cuộn */
+}
+
+.modal__profile-user-main__list::-webkit-scrollbar-thumb {
+    background: #888;
+    /* Màu của thanh cuộn */
+    border-radius: 10px;
+    /* Bo tròn các góc */
+}
+
+.modal__profile-user-main__list::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    /* Màu của thanh cuộn khi hover */
+}
+
+.modal__profile-user-main__list-item {
+    height: 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+}
+
+.modal__profile-user-main__list-item__avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: contain;
+    border: 1px solid #ccc;
+}
+
+.modal__profile-user-main__list-item__info {
+    flex: 1;
+    padding: 0 12px;
+}
+
+.modal__profile-user-main__list-item__info p {
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.modal__profile-user-main__list-item__info span {
+    font-size: 1.2rem;
+    color: #8e8e8e;
+}
+
+.modal__profile-user-main__list-item__follow-btn,
+.modal__profile-user-main__list-item__unfollow-btn {
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal__profile-user-main__list-item__unfollow-btn {
+    color: #0765ff;
 }

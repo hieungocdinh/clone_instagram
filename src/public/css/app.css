@@ -116,8 +116,8 @@ img {
 }
 
 .header__search {
-    width: 216px;
-    height: 28px;
+    width: 300px;
+    height: 30px;
 
     display: none;
     align-items: center;
@@ -125,11 +125,19 @@ img {
 }
 
 .header__search svg {
-    width: 12px;
-    height: 12px;
+    width: 30px;
+    height: 30px;
+    padding: 8px;
+    cursor: pointer;
 
     position: absolute;
-    left: 8px;
+    right: 0;
+}
+
+.header__search svg:hover {
+    background-color: #dfdfdf;
+    border: 1px solid var(--border);
+    border-radius: 4px;
 }
 
 .header__search input {
@@ -137,7 +145,7 @@ img {
     height: 100%;
     background-color: var(--secondary);
 
-    padding: 4px 10px 4px 28px;
+    padding: 4px 30px 4px 16px;
     border: 1px solid var(--border);
     border-radius: 4px;
     outline: none;
@@ -284,4 +292,49 @@ img {
 
 .profile-menu ul li:last-child {
     border-bottom: none;
+}
+
+/* Bottom Navbar */
+.navbar {
+    width: 100%;
+    height: var(--nav-height);
+    background-color: var(--primary);
+
+    display: flex;
+    position: fixed;
+    bottom: -2px;
+    left: 0;
+    z-index: 2;
+}
+
+.navbar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+
+    width: 100%;
+    height: 1px;
+    background-color: var(--border);
+}
+
+.navbar__button {
+    flex: 1 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar__button.profile-button .profile-button__border {
+    width: 28px;
+    height: 28px;
+    border-width: 2px;
+}
+
+/* show and hide */
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
 }

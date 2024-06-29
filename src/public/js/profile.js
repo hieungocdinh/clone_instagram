@@ -4,6 +4,13 @@ const followBtn = document.getElementById("follow-btn");
 const unfollowBtn = document.getElementById("unfollow-btn");
 const settingBtn = document.getElementById("setting");
 const modal = document.getElementById("modal");
+const settingOption = document.querySelector(".modal__profile-options");
+const getFollowersBtn = document.querySelector(".get-followers-btn");
+const getFollowingBtn = document.querySelector(".get-following-btn");
+const getFollowersBtnMobile = document.querySelector(".profile__mobile-followers-info");
+const getFollowingBtnMobile = document.querySelector(".profile__mobile-following-info");
+const listFollowers = document.getElementById("list-followers");
+const listFollowing = document.getElementById("list-following");
 
 
 function openSection(evt, tabName) {
@@ -78,11 +85,13 @@ document.addEventListener("DOMContentLoaded", function () {
     if (settingBtn) {
         settingBtn.addEventListener('click', () => {
             modal.style.display = 'block';
+            settingOption.style.display = 'block';
         });
 
         window.addEventListener('click', function (event) {
             if (event.target == modal) {
                 modal.style.display = 'none';
+                settingOption.style.display = 'none';
             }
         });
 
@@ -98,6 +107,124 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
+
+
+    // get followers
+    getFollowersBtn.addEventListener('click', function () {
+        modal.style.display = 'block';
+        listFollowers.style.display = 'block';
+
+        window.addEventListener('click', function (event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+                listFollowers.style.display = 'none';
+            }
+        });
+
+    });
+    // in mobile
+    getFollowersBtnMobile.addEventListener('click', function () {
+        modal.style.display = 'block';
+        listFollowers.style.display = 'block';
+
+        window.addEventListener('click', function (event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+                listFollowers.style.display = 'none';
+            }
+        });
+
+    });
+
+    // get following
+    getFollowingBtn.addEventListener('click', function () {
+        modal.style.display = 'block';
+        listFollowing.style.display = 'block';
+
+        window.addEventListener('click', function (event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+                listFollowing.style.display = 'none';
+            }
+        });
+
+    });
+    // in mobile
+    getFollowingBtnMobile.addEventListener('click', function () {
+        modal.style.display = 'block';
+        listFollowing.style.display = 'block';
+
+        window.addEventListener('click', function (event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+                listFollowing.style.display = 'none';
+            }
+        });
+
+    });
+
+    // exit list followers and following
+    $('.modal__profile-user-header__close-btn').click(function () {
+        modal.style.display = 'none';
+        listFollowers.style.display = 'none';
+    });
+
+    // unfollow and follow in list follow
+    $('.modal__profile-user-main__list-item__follow-btn').click(function () {
+        const button = $(this);
+        const username = button.data('username');
+        fetch(`/following/follow/${username}`, {
+            method: "POST",
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.success) {
+                    button.siblings('.modal__profile-user-main__list-item__unfollow-btn').removeClass('hide');
+                    button.addClass('hide');
+                }
+            });
+    });
+
+    $('.modal__profile-user-main__list-item__unfollow-btn').click(function () {
+        const button = $(this);
+        const username = button.data('username');
+        fetch(`/following/unfollow/${username}`, {
+            method: "DELETE",
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.success) {
+                    button.siblings('.modal__profile-user-main__list-item__follow-btn').removeClass('hide');
+                    button.addClass('hide');
+                }
+            });
+    });
+
+    // search user in list followers and following
+    $('.modal__profile-user-main__search-input').keyup(function () {
+        const input = $(this);
+        const searchTerm = input.val().toLowerCase();
+
+        // Find the closest list container to the input field
+        const listContainer = input.closest('.modal__profile-user-main').find('.modal__profile-user-main__list');
+
+        // Get all list items in the list container
+        const listItems = listContainer.find('.modal__profile-user-main__list-item');
+
+        // Iterate over each list item
+        listItems.each(function () {
+            const item = $(this);
+            const username = item.data('username').toLowerCase();
+            const fullName = item.data('fullname').toLowerCase();
+
+            // Check if the username or fullName contains the search term
+            if (username.includes(searchTerm) || fullName.includes(searchTerm)) {
+                item.show(); // Show the item if it matches
+            } else {
+                item.hide(); // Hide the item if it doesn't match
+            }
+        });
+    });
 
 
 });

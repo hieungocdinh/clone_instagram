@@ -35,8 +35,8 @@
             </div>
             <div class="profile__profile__details__follower">
                 <span><b>{{getCountOfPosts posts}}</b> posts</span>
-                <button><b>{{profile.countFollowers}}</b> followers</button>
-                <button><b>{{profile.countFollowing}}</b> following</button>
+                <button class="get-followers-btn"><b>{{profile.countFollowers}}</b> followers</button>
+                <button class="get-following-btn"><b>{{profile.countFollowing}}</b> following</button>
             </div>
             <div class="profile__profile__details__displayName">
                 <h6>{{profile.fullName}}</h6>
@@ -46,16 +46,16 @@
             </div>
         </div>
     </div>
-    <div class="profile__mobile-follow">
-        <div class="profile__mobile-follow-info">
+    <div class="profile__mobile">
+        <div class="profile__mobile-info">
             <span>{{getCountOfPosts posts}}</span>
             Bài viết
         </div>
-        <div class="profile__mobile-follow-info">
+        <div class="profile__mobile-info profile__mobile-followers-info">
             <span>{{profile.countFollowers}}</span>
             Followers
         </div>
-        <div class="profile__mobile-follow-info">
+        <div class="profile__mobile-info profile__mobile-following-info">
             <span>{{profile.countFollowing}}</span>
             Following
         </div>
@@ -153,20 +153,92 @@
             </div>
         </div>
     </div>
-</div>
-
-{{!-- Modal --}}
-<div id="modal" class="modal">
-    <div class="modal__profile-options">
-        <div data-option="" class="modal__profile-option">
-            Option 1
+    {{!-- Modal --}}
+    <div id="modal" class="modal">
+        <div class="modal__profile-options">
+            <div data-option="" class="modal__profile-option">
+                Option 1
+            </div>
+            <div data-option="" class="modal__profile-option">
+                Option 2
+            </div>
+            <div data-option="logout" class="modal__profile-option logout-option">
+                Đăng xuất
+            </div>
         </div>
-        <div data-option="" class="modal__profile-option">
-            Option 2
+        <div id="list-followers" class="modal__profile-user">
+            <div class="modal__profile-user-header">
+                <h3>Người theo dõi</h3>
+                <span class="modal__profile-user-header__close-btn">&times;</span>
+            </div>
+            <div class="modal__profile-user-main">
+                <div class="modal__profile-user-main__search">
+                    <input class="modal__profile-user-main__search-input" type="text" placeholder="Tìm kiếm...">
+                </div>
+                <div class="modal__profile-user-main__list">
+                    {{#each followers}}
+                    <div class="modal__profile-user-main__list-item" data-username="{{this.username}}"
+                        data-fullname="{{this.fullName}}">
+                        <img src="{{this.avatar}}" alt="Avatar" class="modal__profile-user-main__list-item__avatar">
+                        <div class="modal__profile-user-main__list-item__info">
+                            <p>{{this.fullName}}</p>
+                            <span>@{{this.username}}</span>
+                        </div>
+                        {{#if this.isUser}}
+                        {{else}}
+                        {{#if this.isFollowing}}
+                        <button data-username="{{this.username}}"
+                            class="modal__profile-user-main__list-item__follow-btn hide">Theo dõi</button>
+                        <button data-username="{{this.username}}"
+                            class="modal__profile-user-main__list-item__unfollow-btn">Đang theo dõi</button>
+                        {{else}}
+                        <button data-username="{{this.username}}"
+                            class="modal__profile-user-main__list-item__follow-btn">Theo dõi</button>
+                        <button data-username="{{this.username}}"
+                            class="modal__profile-user-main__list-item__unfollow-btn hide">Đang theo dõi</button>
+                        {{/if}}
+                        {{/if}}
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
         </div>
-        <div data-option="logout" class="modal__profile-option logout-option">
-            Đăng xuất
+        <div id="list-following" class="modal__profile-user">
+            <div class="modal__profile-user-header">
+                <h3>Đang theo dõi</h3>
+                <span class="modal__profile-user-header__close-btn">&times;</span>
+            </div>
+            <div class="modal__profile-user-main">
+                <div class="modal__profile-user-main__search">
+                    <input class="modal__profile-user-main__search-input" type="text" placeholder="Tìm kiếm...">
+                </div>
+                <div class="modal__profile-user-main__list">
+                    {{#each following}}
+                    <div class="modal__profile-user-main__list-item" data-username="{{this.username}}"
+                        data-fullname="{{this.fullName}}">
+                        <img src="{{this.avatar}}" alt="Avatar" class="modal__profile-user-main__list-item__avatar">
+                        <div class="modal__profile-user-main__list-item__info">
+                            <p>{{this.fullName}}</p>
+                            <span>@{{this.username}}</span>
+                        </div>
+                        {{#if this.isUser}}
+                        {{else}}
+                        {{#if this.isFollowing}}
+                        <button data-username="{{this.username}}"
+                            class="modal__profile-user-main__list-item__follow-btn hide">Theo dõi</button>
+                        <button data-username="{{this.username}}"
+                            class="modal__profile-user-main__list-item__unfollow-btn">Đang theo dõi</button>
+                        {{else}}
+                        <button data-username="{{this.username}}"
+                            class="modal__profile-user-main__list-item__follow-btn">Theo dõi</button>
+                        <button data-username="{{this.username}}"
+                            class="modal__profile-user-main__list-item__unfollow-btn hide">Đang theo dõi</button>
+                        {{/if}}
+                        {{/if}}
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
         </div>
     </div>
-
 </div>

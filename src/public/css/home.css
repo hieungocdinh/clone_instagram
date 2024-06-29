@@ -1,39 +1,3 @@
-/* Bottom Navbar */
-.navbar {
-    width: 100%;
-    height: var(--nav-height);
-    background-color: var(--primary);
-
-    display: flex;
-    position: fixed;
-    bottom: -2px;
-    left: 0;
-    z-index: 2;
-}
-
-.navbar::after {
-    content: '';
-    position: absolute;
-    top: 0;
-
-    width: 100%;
-    height: 1px;
-    background-color: var(--border);
-}
-
-.navbar__button {
-    flex: 1 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.navbar__button.profile-button .profile-button__border {
-    width: 28px;
-    height: 28px;
-    border-width: 2px;
-}
-
 /* Main Content */
 .main-container {
     background-color: var(--primary);

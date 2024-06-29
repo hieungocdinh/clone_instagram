@@ -8,40 +8,90 @@ const { mongooseToObject, mutipleMongooseToObject } = require('../../util/mongoo
 
 class profileController {
     // [GET] /
-    index(req, res, next) {
-        const user = req.user;
-        const username = req.params.username;
-        let isUser = false;
+    async index(req, res, next) {
+        try {
+            const user = req.user;
+            const username = req.params.username;
+            let isUser = false;
 
-        Profile.findOne({ username: username })
-            .then(profile => {
-                if (profile) {
-                    Post.find({ userId: profile.userId })
-                        .sort({ createdAt: 'desc' })
-                        .then(posts => {
-                            if (user.id == profile.userId) isUser = true;
-                            if (isUser) {
-                                return res.render('profile', { title: 'Intagram | Profile', action: 'profile', profile: mongooseToObject(profile), user: user, isUser: isUser, posts: mutipleMongooseToObject(posts) });
-                            }
-                            else {
-                                Following.findOne({ userId: user.id, followingId: profile.userId })
-                                    .then(following => {
-                                        let isFollowing = false;
-                                        if (following) isFollowing = true;
-                                        return res.render('profile', { title: 'Intagram | Profile', action: 'profile', profile: mongooseToObject(profile), user: user, isFollowing: isFollowing, posts: mutipleMongooseToObject(posts) });
-                                    })
-                                    .catch(next)
-                            }
-                        })
-                        .catch(next)
+            const profile = await Profile.findOne({ username: username });
+            if (!profile) {
+                return res.json('Không tìm thấy người dùng');
+            }
+
+            const posts = await Post.find({ userId: profile.userId }).sort({ createdAt: 'desc' });
+
+            // get list followers
+            const followers = await Following.find({ followingId: profile.userId });
+            const listFollowers = [];
+            for (let i = 0; i < followers.length; i++) {
+                let follower = await Profile.findOne({ userId: followers[i].userId }).select('userId username avatar fullName');
+                const check = await Following.findOne({ userId: user.id, followingId: follower.userId });
+
+                follower = follower.toObject();
+                if (check) {
+                    follower.isFollowing = true;
+                } else {
+                    follower.isFollowing = false;
                 }
-                else {
-                    res.json('Không tìm thấy người dùng');
+
+                if (follower.userId.toString() === user.id) {
+                    follower.isUser = true;
                 }
-            })
-            .catch(next)
 
+                listFollowers.push(follower);
+            }
 
+            //get list following
+            const followings = await Following.find({ userId: profile.userId });
+            const listFollowing = [];
+            for (let i = 0; i < followings.length; i++) {
+                let following = await Profile.findOne({ userId: followings[i].followingId }).select('userId username avatar fullName');
+                const check = await Following.findOne({ userId: user.id, followingId: following.userId });
+
+                following = following.toObject();
+                if (check) {
+                    following.isFollowing = true;
+                } else {
+                    following.isFollowing = false;
+                }
+
+                if (following.userId.toString() === user.id) {
+                    following.isUser = true;
+                }
+
+                listFollowing.push(following);
+            }
+
+            if (user.id === profile.userId.toString()) {
+                isUser = true;
+                return res.render('profile', {
+                    title: 'Intagram | Profile',
+                    action: 'profile',
+                    profile: mongooseToObject(profile),
+                    user: user,
+                    isUser: isUser,
+                    posts: mutipleMongooseToObject(posts),
+                    followers: listFollowers,
+                    following: listFollowing,
+                });
+            } else {
+                const following = await Following.findOne({ userId: user.id, followingId: profile.userId });
+                const isFollowing = !!following;
+                return res.render('profile', {
+                    title: 'Intagram | Profile',
+                    action: 'profile',
+                    profile: mongooseToObject(profile),
+                    user: user,
+                    isFollowing: isFollowing,
+                    posts: mutipleMongooseToObject(posts),
+                    followers: listFollowers,
+                    following: listFollowing,
+                });
+            }
+        } catch (error) {
+            next(error);
+        }
     }
 
     edit(req, res, next) {
@@ -81,6 +131,7 @@ class profileController {
             })
             .catch(next)
     }
+
 }
 
 module.exports = new profileController();
