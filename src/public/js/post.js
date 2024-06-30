@@ -360,7 +360,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 .then((res) => res.json())
                 .then((data) => {
                     if (data.success) {
-                        alert('Sửa bài viết thành công');
                         window.location.href = `/post/${postId}`;
                     }
                 })
