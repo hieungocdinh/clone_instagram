@@ -2,7 +2,11 @@ const mongoose = require('mongoose');
 
 async function connect() {
     try {
+        // Đặt tùy chọn strictQuery
+        mongoose.set('strictQuery', false);
+        
         await mongoose.connect(process.env.MONGO_URI, {
+            serverSelectionTimeoutMS: 30000,
             //useNewUrlParser: true,
             //useUnifiedTopology: true,
         });
