@@ -6,6 +6,7 @@ async function connect() {
         mongoose.set('strictQuery', false);
         
         await mongoose.connect(process.env.MONGO_URI, {
+            serverSelectionTimeoutMS: 30000,
             //useNewUrlParser: true,
             //useUnifiedTopology: true,
         });
